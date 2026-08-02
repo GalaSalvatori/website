@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<template id="__bundler_thumbnail" data-bg-color="#FBF5EA">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="200" fill="#FBF5EA"/>
+    <text x="100" y="115" font-family="serif" font-size="40" fill="#1E2A45" text-anchor="middle" font-style="italic">LtL</text>
+  </svg>
+</template>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&family=Pacifico&family=Kalam:wght@400;700&family=Gochi+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; background: #FBF5EA; }
+    a { color: #1E2A45; text-decoration: none; }
+    a:hover { color: #C97B63; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Work Sans', sans-serif; background: #FBF5EA; min-height: 100vh; color: #1E2A45; overflow-x: hidden;">
+
+  <!-- NAV -->
+  <div style="position: sticky; top: 0; z-index: 50; background: rgba(251,245,234,0.95); backdrop-filter: blur(6px); border-bottom: 1px solid #E7DCC7;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 5%;">
+      <div onClick="{{ goHome }}" style="font-family: 'Libre Baskerville', serif; font-weight: 700; font-size: 22px; cursor: pointer; letter-spacing: 0.3px;">Live the Language</div>
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <span onClick="{{ toggleMenu }}" style="cursor: pointer; font-size: 28px; line-height: 1; user-select: none;">{{ menuIcon }}</span>
+      </sc-if>
+      <sc-if value="{{ !isMobile }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+          <span onClick="{{ goHome }}" style="cursor: pointer; font-weight: 600; opacity: {{ homeOpacity }};">Home</span>
+          <span onClick="{{ goGuides }}" style="cursor: pointer; font-weight: 600; opacity: {{ guidesOpacity }};">Guides</span>
+          <span onClick="{{ goMethod }}" style="cursor: pointer; font-weight: 600; opacity: {{ methodOpacity }};">Method</span>
+          <span onClick="{{ goSocials }}" style="cursor: pointer; font-weight: 600; opacity: {{ socialsOpacity }};">Socials</span>
+          <span onClick="{{ goAbout }}" style="cursor: pointer; font-weight: 600; opacity: {{ aboutOpacity }};">About</span>
+          <span onClick="{{ goClasses }}" style="cursor: pointer; font-family: 'Libre Baskerville', serif; background: #1E2A45; color: #FBF5EA; padding: 10px 20px; border-radius: 999px; font-weight: 700; font-size: 15px;">Book a Class</span>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; gap: 4px; padding: 4px 5% 20px;">
+        <span onClick="{{ goHomeClose }}" style="cursor: pointer; font-weight: 600; padding: 10px 0; opacity: {{ homeOpacity }};">Home</span>
+        <span onClick="{{ goGuidesClose }}" style="cursor: pointer; font-weight: 600; padding: 10px 0; opacity: {{ guidesOpacity }};">Guides</span>
+        <span onClick="{{ goMethodClose }}" style="cursor: pointer; font-weight: 600; padding: 10px 0; opacity: {{ methodOpacity }};">Method</span>
+        <span onClick="{{ goSocialsClose }}" style="cursor: pointer; font-weight: 600; padding: 10px 0; opacity: {{ socialsOpacity }};">Socials</span>
+        <span onClick="{{ goAboutClose }}" style="cursor: pointer; font-weight: 600; padding: 10px 0; opacity: {{ aboutOpacity }};">About</span>
+        <span onClick="{{ goClassesClose }}" style="cursor: pointer; text-align: center; font-family: 'Libre Baskerville', serif; background: #1E2A45; color: #FBF5EA; padding: 12px; border-radius: 999px; font-weight: 700; font-size: 15px; margin-top: 8px;">Book a Class</span>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- HOME -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <!-- HERO -->
+      <div style="position: relative; text-align: center; padding: 90px 6% 60px; overflow: hidden;">
+        <div style="position: absolute; top: -60px; right: -40px; width: 260px; height: 260px; border-radius: 50%; background: #F3CBBE; opacity: 0.5; filter: blur(2px);"></div>
+        <div style="position: absolute; bottom: 10px; left: -60px; width: 200px; height: 200px; border-radius: 50%; background: #CFE0DE; opacity: 0.5;"></div>
+        <div style="position: relative; z-index: 1;">
+          <h1 style="font-family: 'Libre Baskerville', serif; font-size: clamp(48px, 9vw, 100px); font-weight: 700; margin: 0; line-height: 1.05;">Live the Language</h1>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; height: clamp(56px, 8vw, 90px); margin-top: 8px; flex-wrap: wrap;">
+            <span style="font-family: 'Libre Baskerville', serif; font-style: italic; font-size: clamp(32px, 6vw, 56px); color: #1E2A45; line-height: 1;">All Things</span>
+            <span style="font-family: {{ heroFont }}; font-size: clamp(32px, 6vw, 56px); color: #C97B63; line-height: 1;">French</span>
+          </div>
+          <p style="max-width: 560px; margin: 28px auto 0; font-size: 19px; line-height: 1.6; color: #3B3226;">French lessons for real life, taught by someone who's been exactly where you are.</p>
+          <div style="display: flex; justify-content: center; gap: 16px; margin-top: 34px; flex-wrap: wrap;">
+            <span onClick="{{ goClasses }}" style="cursor: pointer; font-family: 'Libre Baskerville', serif; background: #1E2A45; color: #FBF5EA; padding: 15px 32px; border-radius: 999px; font-weight: 700; font-size: 17px;">Book a Class</span>
+            <a href="https://shop.beacons.ai/galasalvatori/c3c05a7c-c78a-4583-ab6c-701089761d81" target="_blank" rel="noopener" style="background: transparent; border: 2px solid #1E2A45; font-family: 'Libre Baskerville', serif; padding: 13px 30px; border-radius: 999px; font-weight: 700; font-size: 17px;">Get the Free Guide</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 LINK CARDS -->
+      <div style="text-align: center; margin: 50px 0 20px; font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 22px; color: #C97B63;">Everything you need, in one place</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; padding: 0 6% 70px; max-width: 1200px; margin: 0 auto;">
+        <div onClick="{{ goClasses }}" style="cursor: pointer; background: #1E2A45; color: #FBF5EA; border-radius: 18px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 88px;">
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 600;">Book a French Class</div>
+          <div style="font-size: 15px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7;">→</div>
+        </div>
+        <a href="https://shop.beacons.ai/galasalvatori/0f7b82cb-074d-43e8-974b-15b91bf01d65" target="_blank" rel="noopener" style="background: #F3CBBE; color: #1E2A45; border-radius: 18px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 88px;">
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 600;">Grammar Guide</div>
+          <div style="font-size: 15px; opacity: 0.6;">→</div>
+        </a>
+        <a href="https://shop.beacons.ai/galasalvatori/c3c05a7c-c78a-4583-ab6c-701089761d81" target="_blank" rel="noopener" style="background: #FBF5EA; border: 2px solid #1E2A45; color: #1E2A45; border-radius: 18px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 88px;">
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 600;">Free Starter Guide</div>
+          <div style="font-size: 15px; opacity: 0.6;">→</div>
+        </a>
+        <a href="{{ spotifyUrl }}" target="_blank" rel="noopener" style="background: #CFE0DE; color: #1E2A45; border-radius: 18px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 88px;">
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 21px; font-weight: 600;">French Spotify Mix</div>
+          <div style="font-size: 15px; opacity: 0.6;">→</div>
+        </a>
+      </div>
+
+      <!-- ABOUT TEASER -->
+      <div style="max-width: 640px; margin: 0 auto; padding: 40px 6% 70px; text-align: center;">
+        <div style="font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 600; margin-bottom: 14px;">C'est Gala !</div>
+        <p style="font-size: 18px; line-height: 1.7; color: #3B3226; margin: 0 0 16px;">I moved to France with zero French and became fluent in nine months. Now I teach the way I wish someone had taught me.</p>
+        <span onClick="{{ goAbout }}" style="cursor: pointer; font-weight: 700; color: #C97B63;">Read my full story →</span>
+      </div>
+
+      <!-- METHOD TEASER -->
+      <div style="max-width: 640px; margin: 0 auto; padding: 0 6% 70px; text-align: center;">
+        <div style="font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 600; margin-bottom: 14px;">How I Teach</div>
+        <p style="font-size: 18px; line-height: 1.7; color: #3B3226; margin: 0 0 16px;">Speaking first, grammar second. Little and often beats cramming, so I build French into everyday life instead of one big study session.</p>
+        <span onClick="{{ goMethod }}" style="cursor: pointer; font-weight: 700; color: #C97B63;">See my method →</span>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div style="background: #F3CBBE22; padding: 60px 6% 20px;">
+        <div style="text-align: center; font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 600; margin-bottom: 10px;">What students say</div>
+        <div style="text-align: center; font-weight: 700; color: #C97B63; margin-bottom: 34px;">★★★★★ &nbsp;50+ students taught</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto;">
+          <div style="background: #FBF5EA; border-radius: 20px; padding: 26px; box-shadow: 0 4px 16px rgba(30,42,69,0.06);">
+            <div style="color: #C97B63; letter-spacing: 2px; margin-bottom: 8px;">★★★★★</div>
+            <p style="margin: 0 0 14px; font-size: 16px; line-height: 1.6;">"I was quite nervous starting as I didn't have much confidence in my French, but Gala made the whole experience really enjoyable. I've improved much more than I expected."</p>
+            <div style="font-weight: 700; font-size: 14px; opacity: 0.7;">— Stephen Grant</div>
+          </div>
+          <div style="background: #FBF5EA; border-radius: 20px; padding: 26px; box-shadow: 0 4px 16px rgba(30,42,69,0.06);">
+            <div style="color: #C97B63; letter-spacing: 2px; margin-bottom: 8px;">★★★★★</div>
+            <p style="margin: 0 0 14px; font-size: 16px; line-height: 1.6;">"Gala is an excellent teacher. Thanks to her classes, I've significantly improved my French speaking skills."</p>
+            <div style="font-weight: 700; font-size: 14px; opacity: 0.7;">— Alejandro Ap</div>
+          </div>
+          <div style="background: #FBF5EA; border-radius: 20px; padding: 26px; box-shadow: 0 4px 16px rgba(30,42,69,0.06);">
+            <div style="color: #C97B63; letter-spacing: 2px; margin-bottom: 8px;">★★★★★</div>
+            <p style="margin: 0 0 14px; font-size: 16px; line-height: 1.6;">"I've been joining the French group classes since March, and she's one of the best, if not the best, teachers I've ever had."</p>
+            <div style="font-weight: 700; font-size: 14px; opacity: 0.7;">— Ibrahim Abdullahi</div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="https://www.google.com/maps/place/GALA+Language+Academy/@46.952891,-79.5417226,3z/data=!3m1!4b1!4m6!3m5!1s0x88d9b5a7589a5a7d:0x8a21f3faddd896ba!8m2!3d46.952891!4d-79.5417226!16s%2Fg%2F11n4952qvt?entry=ttu" target="_blank" rel="noopener" style="font-weight: 700; color: #C97B63;">Read more reviews →</a>
+        </div>
+      </div>
+
+      <!-- ILLUSTRATION FOOTER STRIP -->
+      <div style="width: 100%; overflow: hidden; margin-top: 0;">
+        <img src="./assets/paris-skyline-v2.png" alt="Paris skyline sketch" style="width: 100%; display: block; object-fit: cover;">
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- METHOD PAGE -->
+  <sc-if value="{{ isMethod }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 80px 6% 90px; max-width: 780px; margin: 0 auto;">
+      <div style="font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 6vw, 54px); font-weight: 700; text-align: center; margin-bottom: 40px;">My Method</div>
+      <div style="font-size: 18px; line-height: 1.8; color: #3B3226; display: flex; flex-direction: column; gap: 18px;">
+        <p style="margin: 0;">I believe speaking is the number one way to improve. You want to learn French you can start using immediately. Most people start with grammar, build a reading and writing foundation, and then never actually speak because they're too scared of getting it wrong. I think you should dive in immediately.</p>
+        <p style="margin: 0;">We recreate full immersion as much as possible, because that's how I learned it. You should be speaking from day one, even before you know much. Incorporate French into your life wherever you can, and avoid burnout along the way.</p>
+      </div>
+      <div style="background: #1E2A45; color: #FBF5EA; border-radius: 22px; padding: 30px 34px; margin: 34px 0; text-align: center;">
+        <div style="font-family: 'Libre Baskerville', serif; font-style: italic; font-size: 26px;">5 minutes today beats 2 hours once a week.</div>
+      </div>
+      <div style="font-size: 18px; line-height: 1.8; color: #3B3226;">
+        <p style="margin: 0 0 16px;">Instead of two hours a day for one week and then quitting, aim for 30 minutes a day, however that looks:</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px;">
+          <div style="background: #F3CBBE33; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Listen to music</div>
+          <div style="background: #CFE0DE55; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Scroll on Instagram</div>
+          <div style="background: #F3CBBE33; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Speak to yourself</div>
+          <div style="background: #CFE0DE55; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Speak with a teacher</div>
+          <div style="background: #F3CBBE33; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Read a book</div>
+          <div style="background: #CFE0DE55; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Journal in French</div>
+          <div style="background: #F3CBBE33; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Use a French recipe</div>
+          <div style="background: #CFE0DE55; border-radius: 16px; padding: 18px 20px; font-weight: 600;">Use French directions when driving</div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <span onClick="{{ goClasses }}" style="cursor: pointer; background: #1E2A45; color: #FBF5EA; padding: 15px 32px; border-radius: 999px; font-weight: 700; font-size: 16px;">Book a Class</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- CLASSES PAGE -->
+  <sc-if value="{{ isClasses }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 80px 6% 90px; max-width: 1000px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <div style="font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 6vw, 54px); font-weight: 700;">French Classes</div>
+        <p style="font-size: 18px; color: #3B3226; max-width: 520px; margin: 14px auto 0;">Pick the format that fits where you're at. Both are one on one, both are in French, both are pressure free.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px;">
+        <div style="background: #1E2A45; color: #FBF5EA; border-radius: 26px; padding: 36px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7;">Conversation</div>
+            <div style="font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700;">$30</div>
+          </div>
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 600;">French Conversation Class</div>
+          <p style="font-size: 16px; line-height: 1.6; margin: 0; opacity: 0.9;">A relaxed one on one speaking session in French. We pick a topic, you talk, I listen, correct, and guide you. No prep needed on your end, just show up and speak.</p>
+          <a href="https://cal.com/galasalvatori/french-conversation-class?overlayCalendar=true" target="_blank" rel="noopener" style="margin-top: auto; background: #F3CBBE; color: #1E2A45; text-align: center; padding: 14px; border-radius: 999px; font-weight: 700;">Book Conversation Class</a>
+        </div>
+        <div style="background: #F3CBBE; color: #1E2A45; border-radius: 26px; padding: 36px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6;">Guided</div>
+            <div style="font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700;">$40</div>
+          </div>
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 600;">French Guided Lesson</div>
+          <p style="font-size: 16px; line-height: 1.6; margin: 0;">A one on one French lesson tailored to your level and goals. Each session includes a short grammar or vocabulary focus, structured speaking practice, and real conversation built around what we covered.</p>
+          <a href="https://shop.beacons.ai/galasalvatori/7dccc844-7105-4d89-b376-d3256396952d" target="_blank" rel="noopener" style="margin-top: auto; background: #1E2A45; color: #FBF5EA; text-align: center; padding: 14px; border-radius: 999px; font-weight: 700;">Book Guided Lesson</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- GUIDES PAGE -->
+  <sc-if value="{{ isGuides }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 80px 6% 90px; max-width: 1000px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <div style="font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 6vw, 54px); font-weight: 700;">Guides &amp; Goodies</div>
+        <p style="font-size: 18px; color: #3B3226; max-width: 520px; margin: 14px auto 0;">Learn at your own pace, whenever it fits your day.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px;">
+        <div style="background: #F3CBBE22; border: 2px dashed #C97B63; border-radius: 26px; padding: 36px; display: flex; flex-direction: column; gap: 16px; position: relative;">
+          <div style="position: absolute; top: -14px; left: 30px; background: #C97B63; color: #FBF5EA; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 999px;">Start here, it's free</div>
+          <div style="font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6; margin-top: 6px;">Free</div>
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 600;">French Starter Guide</div>
+          <p style="font-size: 16px; line-height: 1.6; margin: 0; color: #3B3226;">The essentials to get you speaking your first French sentences with confidence, free, no strings attached.</p>
+          <a href="https://shop.beacons.ai/galasalvatori/c3c05a7c-c78a-4583-ab6c-701089761d81" target="_blank" rel="noopener" style="margin-top: auto; background: #1E2A45; color: #FBF5EA; text-align: center; padding: 14px; border-radius: 999px; font-weight: 700;">Get it Free</a>
+        </div>
+        <div style="background: #1E2A45; color: #FBF5EA; border-radius: 26px; padding: 36px; display: flex; flex-direction: column; gap: 16px; position: relative;">
+          <div style="position: absolute; top: -14px; left: 30px; background: #F3CBBE; color: #1E2A45; font-size: 13px; font-weight: 700; padding: 5px 14px; border-radius: 999px;">Level up</div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 6px;">
+            <div style="font-size: 14px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7;">Paid</div>
+            <div style="font-family: 'Libre Baskerville', serif; font-size: 18px; font-weight: 700; color: #F3CBBE;">$4.99</div>
+          </div>
+          <div style="font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 600;">The Grammar Guide</div>
+          <p style="font-size: 16px; line-height: 1.6; margin: 0; opacity: 0.9;">The deep dive: grammar explained the way I wish someone had explained it to me, minus the jargon.</p>
+          <a href="https://shop.beacons.ai/galasalvatori/0f7b82cb-074d-43e8-974b-15b91bf01d65" target="_blank" rel="noopener" style="margin-top: auto; background: #F3CBBE; color: #1E2A45; text-align: center; padding: 14px; border-radius: 999px; font-weight: 700;">Get the Guide</a>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 50px;">
+        <a onClick="{{ goClasses }}" style="cursor: pointer; font-size: 17px; color: #C97B63; font-weight: 700;">Want to talk through what you're reading? That's what classes are for. →</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- SOCIALS PAGE -->
+  <sc-if value="{{ isSocials }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 80px 6% 90px; max-width: 1080px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <div style="font-family: 'Libre Baskerville', serif; font-size: clamp(36px, 6vw, 54px); font-weight: 700; margin-bottom: 28px;">Make French Part of Your Day</div>
+        <p style="font-size: 19px; color: #3B3226; max-width: 640px; margin: 0 auto 20px;">Learning a language doesn't have to be a struggle or take hours. Some days you're too busy for a structured lesson, but even five to ten minutes of French is enough to keep your progress alive.</p>
+        <p style="font-size: 19px; color: #3B3226; max-width: 640px; margin: 0 auto;">That's why I create French content daily. Follow along on Instagram and TikTok, some posts are quick lessons, others are A2 level day in the life clips with French subtitles, so you're picking up vocabulary even on the busiest days.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: {{ socialsColumns }}; gap: 36px; align-items: center; justify-content: center; max-width: 780px; margin: 0 auto;">
+        <div style="justify-self: center; width: {{ phoneWidth }}; height: {{ phoneHeight }}; border-radius: {{ phoneRadius }}; background: #111; padding: {{ phonePadding }}; box-shadow: 0 20px 50px rgba(30,42,69,0.25);">
+          <div style="width: 100%; height: 100%; border-radius: {{ phoneInnerRadius }}; overflow: hidden; position: relative; background: #000;">
+            <video src="./assets/socials-video.mp4" controls="true" playsinline="true" autoplay="true" muted="true" loop="true" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <a href="https://www.instagram.com/galasalv/" target="_blank" rel="noopener" style="background: #F3CBBE; color: #1E2A45; border-radius: 22px; padding: 26px 28px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 600;">Instagram</div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5;">Daily French videos with subtitles, lessons and real life.</p>
+          </a>
+          <a href="https://www.tiktok.com/@galasalv" target="_blank" rel="noopener" style="background: #1E2A45; color: #FBF5EA; border-radius: 22px; padding: 26px 28px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 600;">TikTok</div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5; opacity: 0.9;">Quick vocab drops and subtitled French clips.</p>
+          </a>
+          <a href="https://www.youtube.com/@GalaSalv" target="_blank" rel="noopener" style="background: #CFE0DE; color: #1E2A45; border-radius: 22px; padding: 26px 28px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 600;">YouTube</div>
+            <p style="margin: 0; font-size: 15px; line-height: 1.5;">Longer form content across all three of my languages.</p>
+          </a>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 50px; font-family: 'Caveat', cursive; font-size: clamp(24px, 6vw, 34px); color: #C97B63; overflow-wrap: break-word;">Follow my life in France!</div>
+    </div>
+  </sc-if>
+
+  <!-- ABOUT PAGE -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 50px 6% 90px; max-width: 820px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; align-items: center; margin-bottom: 40px;">
+        <img src="assets/gala-photo.png" alt="Gala" style="width: 100%; height: 260px; max-width: 320px; margin: 0 auto; object-fit: cover; border-radius: 22px; display: block;">
+        <div>
+          <div style="font-family: 'Libre Baskerville', serif; font-size: clamp(32px, 5vw, 46px); font-weight: 700;">Salut, je suis Gala !</div>
+        </div>
+      </div>
+      <div style="font-size: 18px; line-height: 1.8; color: #3B3226; display: flex; flex-direction: column; gap: 18px;">
+        <p style="margin: 0;">I'm an American who grew up bilingual and was always obsessed with languages. At 14, I really wanted French, not just to pass a class, so I decided to move to Bordeaux with zero French.</p>
+        <p style="margin: 0;">The hardest part wasn't grammar, it was confidence: making myself speak out loud and getting comfortable stumbling over pronunciation instead of staying quiet until it felt perfect. Nine months in, I was speaking fluently.</p>
+        <p style="margin: 0;">When I moved back to Miami I kept French part of my life by going to a French high school, and today I'm trilingual. Now I'm moving back to France to reach C2 level and live the culture, not just study it.</p>
+        <p style="margin: 0;">That's the whole reason I teach: I love helping people feel confident enough to speak, fall for the culture the way I did, and actually have fun with French instead of treating it like a chore.</p>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- FOOTER -->
+  <div style="background: #1E2A45; color: #FBF5EA; padding: 46px 6% 30px; margin-top: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+      <div style="font-family: 'Libre Baskerville', serif; font-size: 20px; font-weight: 700;">Live the Language</div>
+      <div style="display: flex; gap: 22px; flex-wrap: wrap;">
+        <a href="https://www.instagram.com/galasalv/" target="_blank" rel="noopener" style="color: #FBF5EA; font-weight: 600;">Instagram</a>
+        <a href="https://www.tiktok.com/@galasalv" target="_blank" rel="noopener" style="color: #FBF5EA; font-weight: 600;">TikTok</a>
+        <a href="https://www.youtube.com/@GalaSalv" target="_blank" rel="noopener" style="color: #FBF5EA; font-weight: 600;">YouTube</a>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 26px; opacity: 0.6; font-size: 14px;">© 2026 Live the Language</div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;spotifyUrl&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;https://open.spotify.com/playlist/4bjHfg786qqwgov8zny3df?si=cf1ad5c4593d414a&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Content&quot;}}">
+const FONTS = ["'Caveat', cursive", "'Pacifico', cursive", "'Kalam', cursive", "'Shadows Into Light', cursive", "'Gochi Hand', cursive"];
+
+class Component extends DCLogic {
+  state = { page: 'home', fontIndex: 0, isMobile: false, menuOpen: false };
+
+  componentDidMount() {
+    this._timer = setInterval(() => {
+      this.setState(s => ({ fontIndex: (s.fontIndex + 1) % FONTS.length }));
+    }, 900);
+    this._checkWidth = () => this.setState({ isMobile: window.innerWidth < 780 });
+    this._checkWidth();
+    window.addEventListener('resize', this._checkWidth);
+  }
+
+  componentWillUnmount() {
+    if (this._timer) clearInterval(this._timer);
+    window.removeEventListener('resize', this._checkWidth);
+  }
+
+  renderVals() {
+    const page = this.state.page;
+    const nav = (p) => { this.setState({ page: p }); window.scrollTo(0, 0); };
+    const navClose = (p) => { this.setState({ page: p, menuOpen: false }); window.scrollTo(0, 0); };
+    return {
+      isMobile: this.state.isMobile,
+      showMobileMenu: this.state.isMobile && this.state.menuOpen,
+      menuIcon: this.state.menuOpen ? '✕' : '☰',
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      goHomeClose: () => navClose('home'),
+      goGuidesClose: () => navClose('guides'),
+      goMethodClose: () => navClose('method'),
+      goSocialsClose: () => navClose('socials'),
+      goAboutClose: () => navClose('about'),
+      goClassesClose: () => navClose('classes'),
+      isHome: page === 'home',
+      isClasses: page === 'classes',
+      isGuides: page === 'guides',
+      isSocials: page === 'socials',
+      isAbout: page === 'about',
+      isMethod: page === 'method',
+      homeOpacity: page === 'home' ? 1 : 0.5,
+      classesOpacity: page === 'classes' ? 1 : 0.5,
+      guidesOpacity: page === 'guides' ? 1 : 0.5,
+      socialsOpacity: page === 'socials' ? 1 : 0.5,
+      aboutOpacity: page === 'about' ? 1 : 0.5,
+      methodOpacity: page === 'method' ? 1 : 0.5,
+      goHome: () => nav('home'),
+      goClasses: () => nav('classes'),
+      goGuides: () => nav('guides'),
+      goSocials: () => nav('socials'),
+      goAbout: () => nav('about'),
+      goMethod: () => nav('method'),
+      heroFont: FONTS[this.state.fontIndex],
+      socialsColumns: this.state.isMobile ? '1fr' : 'minmax(240px, 320px) 1fr',
+      phoneWidth: this.state.isMobile ? '190px' : '300px',
+      phoneHeight: this.state.isMobile ? '386px' : '610px',
+      phoneRadius: this.state.isMobile ? '30px' : '44px',
+      phoneInnerRadius: this.state.isMobile ? '20px' : '32px',
+      phonePadding: this.state.isMobile ? '9px' : '14px',
+      spotifyUrl: this.props.spotifyUrl || 'https://open.spotify.com/playlist/4bjHfg786qqwgov8zny3df?si=cf1ad5c4593d414a',
+    };
+  }
+}
+
+</script>
+</body>
+</html>
